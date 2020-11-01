@@ -1,0 +1,30 @@
+Calculate Binary + 111010010101 10100101010101
+Calculate Binary - 111010010101 10100101010101
+Calculate Binary - 111010010101 101000101
+Calculate Binary / 111010010101 10100101010101
+Calculate Binary * 111010010101 10100101010101
+
+Calculate Hexadecimal + 2D29 82D3
+Calculate Hexadecimal - 2D29 82D3
+Calculate Hexadecimal / 2D29 82D3
+Calculate Hexadecimal * 2D29 82D3
+
+Convert Binary to Decimal 111010010101 
+Convert Decimal to Binary 3733
+
+Convert Hexadecimal to Decimal AFFC
+Convert Decimal to Hexadecimal 3733
+
+
+
+
+Convert Data Unit to Gigabytes 49039
+
+Calculate Download/Upload Time 5000 Gigabytes 0.4441187573557168 Gbit/s
+Calculate Website Bandwidth 5000 per day 500 Kilobytes 2
+Convert Monthly Usage to Bandwidth Gigabytes 2 Mbit/s
+Convert Monthly Usage to Bandwidth 657.45 Gigabytes Mbit/s
+
+
+
+
