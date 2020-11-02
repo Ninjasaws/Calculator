@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class FileInput  extends BinDecHexCalc {
+public class FileInput  extends Calculator.BinDecHexCalc {
 
     public static final HashMap<String,String> wordMap = new HashMap<>();
 
