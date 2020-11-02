@@ -5,8 +5,28 @@ import Model.Decimal;
 public class DecimalCalculator extends Calculator<Decimal> {
 
 
+    public DecimalCalculator(Decimal val) {
+        super(val);
+    }
+
     public Decimal Add(Decimal other) {
         return new Decimal(Double.parseDouble(this.getObj().getNumber()) + Double.parseDouble(other.getNumber())+"");
+    }
+
+    public Decimal Subtract(Decimal other) {
+        return new Decimal(Double.parseDouble(this.getObj().getNumber()) - Double.parseDouble(other.getNumber())+"");
+    }
+
+    public Decimal Multiply(Decimal other) {
+        return new Decimal(Double.parseDouble(this.getObj().getNumber()) * Double.parseDouble(other.getNumber())+"");
+    }
+
+    public Decimal Divide(Decimal other) {
+        return new Decimal(Double.parseDouble(this.getObj().getNumber()) / Double.parseDouble(other.getNumber())+"");
+    }
+
+    public Decimal Modulus(Decimal other) {
+        return new Decimal(Double.parseDouble(this.getObj().getNumber()) % Double.parseDouble(other.getNumber())+"");
     }
 
 }

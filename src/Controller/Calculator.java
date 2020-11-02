@@ -2,13 +2,12 @@ package Controller;
 
 
 import Model.Number;
-import Controller.Convertable;
 
-public abstract class Calculator<F extends Number<F>>  implements Convertable {
+public abstract class Calculator<F extends Number<F>> implements Convertible {
 
     private F Obj;
 
-    public Calculator(){
+    public Calculator(F Obj){
         this.Obj = Obj;
     }
 
@@ -16,8 +15,8 @@ public abstract class Calculator<F extends Number<F>>  implements Convertable {
         return this.Obj;
     }
 
-    public void Add(){}
-    public void Subtract(){}
-    public void Divide(){}
-    public void Multiply(){}
+    public abstract F Add(F Obj);
+    public abstract F Subtract(F Obj);
+    public abstract F Divide(F Obj);
+    public abstract F Multiply(F Obj);
 }

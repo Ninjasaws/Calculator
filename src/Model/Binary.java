@@ -43,4 +43,24 @@ public class Binary extends Number<Binary> {
         return new Decimal(result+"");
     }
 
+    public Hexadecimal toHexadecimal(){
+
+        String Bin = this.getNumber(); // 01101011111101001000001
+
+        long temp;
+
+        StringBuilder Hex = new StringBuilder();
+
+        while(!(Bin.length() < 4)){
+            temp = Long.parseLong( new Binary(Bin.substring(Bin.length()-4)).toDecimal().getNumber()   ); // Takes last 4 length of string              (new Decimal(Bin.substring(Bin.length()-4))).getNumber();
+            // converts to Dec but if Dec# is > 10 it changes to letter symbol
+            if(temp > 9) Hex.insert(0, (char) ('7' + temp));
+            else Hex.insert(0, temp);
+            Bin = Bin.substring(0,Bin.length()-4);
+        }
+
+        if(Bin.length() > 0) return new Hexadecimal ((new Binary( Bin).toDecimal() ) + Hex.toString());
+        return new Hexadecimal(Hex.toString());
+    }
+
 }

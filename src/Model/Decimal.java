@@ -74,6 +74,8 @@ public class Decimal extends Number<Decimal>{
 
     }
 
+    public Hexadecimal toHexadecimal(){ return this.toBinary().toHexadecimal(); }
+
 
     private static String ArrToStr(String[] StrArr){
         String str = "";

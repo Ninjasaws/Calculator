@@ -170,7 +170,7 @@ public abstract class Calculator {
             StringBuilder Hex = new StringBuilder();
 
             while(!(Bin.length() < 4)){
-                temp = BinToDec(Bin.substring(Bin.length()-4)); // Takes last 4 length of string
+                temp = BinToDec(Bin.substring(Bin.length()-4)); // Takes last 4 length of string        Double.parseDouble( new Binary(Bin.substring(Bin.length()-4)).toDecimal().getNumber()   )
                 // converts to Dec but if Dec# is > 10 it changes to letter symbol
                 if(temp > 9) Hex.insert(0, (char) ('7' + temp));
                 else Hex.insert(0, temp);

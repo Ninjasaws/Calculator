@@ -11,14 +11,23 @@ public class BinaryCalculator extends Calculator<Binary> {
     }
 
     public Binary Add(Binary other){
-
-        //this.getObj().toDecimal().Add
-
-        return new Binary();
-
-
+        return new DecimalCalculator(this.getObj().toDecimal()).Add(other.toDecimal()).toBinary();
     }
 
+    public Binary Subtract(Binary other){
+        return new DecimalCalculator(this.getObj().toDecimal()).Subtract(other.toDecimal()).toBinary();
+    }
 
+    public Binary Multiply(Binary other){
+        return new DecimalCalculator(this.getObj().toDecimal()).Multiply(other.toDecimal()).toBinary();
+    }
+
+    public Binary Divide(Binary other){
+        return new DecimalCalculator(this.getObj().toDecimal()).Divide(other.toDecimal()).toBinary();
+    }
+
+    public Binary Modulus(Binary other){
+        return new DecimalCalculator(this.getObj().toDecimal()).Modulus(other.toDecimal()).toBinary();
+    }
 
 }
