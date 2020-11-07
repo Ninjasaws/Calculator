@@ -1,3 +1,10 @@
+import Controller.BinaryCalculator;
+import Controller.DecimalCalculator;
+import Controller.HexCalculator;
+import Controller.InternetCalculator;
+import Model.*;
+
+import java.io.File;
 import java.util.*;
 public class UserInterface extends FileInput{
 
@@ -43,7 +50,9 @@ public class UserInterface extends FileInput{
                     input = webSite();
                     break;
                 case "file":
-                    // Send name of file tokens.get(1) to be read.
+                    File inputFile = new File(tokens.get(1));
+                    new FileInput().goof(inputFile);
+                    System.out.println("Done.");
                     break;
                 default:
                     break;
@@ -79,6 +88,7 @@ public class UserInterface extends FileInput{
         System.out.println("dataUnit List: <b> - bits, <kb> - kilobits,  <mb> - megabits, <gb> - gigabits, <tb> - terabits");
         System.out.println("             : <B> - Bytes, <KB> - Kilobytes, <MB> - Megabytes,  <GB> - Gigabytes, <TB> - Terabytes ");
     }
+
     public static void bandwidthType(){
         System.out.println("bandwidthType are the following in carrots <>");
         System.out.println("<b>/s -> bits per second");
@@ -108,34 +118,33 @@ public class UserInterface extends FileInput{
                 while (words.hasNext())
                     tokens.add(words.next().toUpperCase());
 
-                System.out.println(tokens);
 
                 if (tokens.get(1).equals("B")) {
                     if (tokens.get(2).equals("D"))
-                        input = "" + BinToDec(tokens.get(0));
+                        input = new Binary(tokens.get(0)).toDecimal().toString();
                     else if (tokens.get(2).equals("H"))
-                        input = "" + BinToHex(tokens.get(0));
+                        input = new Binary(tokens.get(0)).toHexadecimal().toString();
                     else input = "Error Binary";
+
                 } else if (tokens.get(1).equals("D")) {
                     if (tokens.get(2).equals("B"))
-                        input = "" + DecToBin(tokens.get(0));
+                        input = new Decimal(tokens.get(0)).toBinary().toString();
                     else if (tokens.get(2).equals("H"))
-                        input = "" + DecToHex(tokens.get(0));
+                        input = new Decimal(tokens.get(0)).toHexadecimal().toString();
                     else input = "Error Decimal";
+
                 } else if (tokens.get(1).equals("H")) {
                     if (tokens.get(2).equals("B"))
-                        input = "" + HexToBin(tokens.get(0));
-                    else if (tokens.get(2).equals("D"))
-                        input = "" + HexToDec(tokens.get(0));
+                        input = new Hexadecimal(tokens.get(0)).toBinary().toString();
+                    else if (tokens.get(2).equals("H"))
+                        input = new Hexadecimal(tokens.get(0)).toDecimal().toString();
                     else input = "Error Hexadecimal";
                 }
                 else input = "USER ERROR?";
                 System.out.println("result : " + input);
             }
-            else System.out.println("oof");
         }
         return input;
-
     }
 
     public static String DataUnitsMod() throws Exception {
@@ -159,38 +168,39 @@ public class UserInterface extends FileInput{
                 while (words.hasNext())
                     tokens.add(words.next().toUpperCase());
 
-                System.out.println(tokens);
-
                 if (tokens.get(0).equals("B")) {
                     if (tokens.get(2).equals("+"))
-                        input = "" + binAdd(tokens.get(1),tokens.get(3));
+                        input = new BinaryCalculator(new Binary(tokens.get(1))).Add(new Binary(tokens.get(3))).toString();
                     else if (tokens.get(2).equals("-"))
-                        input = "" + binSub(tokens.get(1),tokens.get(3));
+                        input = new BinaryCalculator(new Binary(tokens.get(1))).Subtract(new Binary(tokens.get(3))).toString();
                     else if (tokens.get(2).equals("/"))
-                        input = "" + binDivide(tokens.get(1),tokens.get(3));
+                        input = new BinaryCalculator(new Binary(tokens.get(1))).Add(new Binary(tokens.get(3))).toString()
+                                + " Remainder of " + new BinaryCalculator(new Binary(tokens.get(1))).Modulus(new Binary(tokens.get(3))).toString();
                     else if (tokens.get(2).equals("*"))
-                        input = "" + binMulti(tokens.get(1),tokens.get(3));
+                        input = new BinaryCalculator(new Binary(tokens.get(1))).Multiply(new Binary(tokens.get(3))).toString();
                     else input = "Error Binary";
                 }else if (tokens.get(0).equals("D")) {
                     if (tokens.get(2).equals("+"))
-                        input = "" + (Long.parseLong( tokens.get(1))+Long.parseLong( tokens.get(3)));
+                        input = new DecimalCalculator(new Decimal(tokens.get(1))).Add(new Decimal(tokens.get(3))).toString();
                     else if (tokens.get(2).equals("-"))
-                        input = "" + (Long.parseLong( tokens.get(1))-Long.parseLong( tokens.get(3)));
+                        input = new DecimalCalculator(new Decimal(tokens.get(1))).Subtract(new Decimal(tokens.get(3))).toString();
                     else if (tokens.get(2).equals("/"))
-                        input = "" + (Long.parseLong( tokens.get(1))/Long.parseLong( tokens.get(3)) + "Remainder: " + Long.parseLong( tokens.get(1))%Long.parseLong( tokens.get(3)));
+                        input = new DecimalCalculator(new Decimal(tokens.get(1))).Divide(new Decimal(tokens.get(3))).toString()
+                                + " Remainder: " + new DecimalCalculator(new Decimal(tokens.get(1))).Modulus(new Decimal(tokens.get(3))).toString();
                     else if (tokens.get(2).equals("*"))
-                        input = "" + (Long.parseLong( tokens.get(1))*Long.parseLong( tokens.get(3)));
+                        input = new DecimalCalculator(new Decimal(tokens.get(1))).Multiply(new Decimal(tokens.get(3))).toString();
                     else input = "Error Binary";
                 }else if (tokens.get(0).equals("H")) {
                     if (tokens.get(2).equals("+"))
-                        input = "" + HexAdd(tokens.get(1),tokens.get(3));
+                        input = new HexCalculator(new Hexadecimal(tokens.get(1))).Add(new Hexadecimal(tokens.get(3))).toString();
                     else if (tokens.get(2).equals("-"))
-                        input = "" + HexSub(tokens.get(1),tokens.get(3));
+                        input = new HexCalculator(new Hexadecimal(tokens.get(1))).Subtract(new Hexadecimal(tokens.get(3))).toString();
                     else if (tokens.get(2).equals("/"))
-                        input = "" + HexDivide(tokens.get(1),tokens.get(3));
+                        input = new HexCalculator(new Hexadecimal(tokens.get(1))).Divide(new Hexadecimal(tokens.get(3))).toString()
+                                + " Remainder of " + new HexCalculator(new Hexadecimal(tokens.get(1))).Modulus(new Hexadecimal(tokens.get(3))).toString();
                     else if (tokens.get(2).equals("*"))
-                        input = "" + HexMulti(tokens.get(1),tokens.get(3));
-                    else input = "Error Binary";
+                        input = new HexCalculator(new Hexadecimal(tokens.get(1))).Multiply(new Hexadecimal(tokens.get(3))).toString();
+                    else input = "Error Hexadecimal";
                 }
                 else input = "USER ERROR?";
                 System.out.println("result: " + input);
@@ -219,10 +229,8 @@ public class UserInterface extends FileInput{
                 while (words.hasNext())
                     tokens.add(words.next());
 
-                System.out.println(tokens);
-
                 if (!(tokens.size() > 4 ||tokens.size() < 3))
-                    input = DataConverter(tokens.get(0),tokens.get(1),tokens.get(2)) +"";
+                    input = new SizeUnit( Long.parseLong(tokens.get(0)),tokens.get(1)).convertTo(tokens.get(2)).toString();// DataConverter(tokens.get(0),tokens.get(1),tokens.get(2)) +"";
                 else input = "USER ERROR?";
                 System.out.println("result: " + input);
             }
@@ -230,10 +238,7 @@ public class UserInterface extends FileInput{
         return input;
     }
 
-    /*
-        System.out.println("(6) Calculate ~: Website bandwidth");
-     */
-    public static String Usage(){
+    public static String Usage() throws Exception {
         String input = "";
 
         Scanner scan = new Scanner(System.in);
@@ -261,13 +266,10 @@ public class UserInterface extends FileInput{
                 System.out.println(Character.isLowerCase(tokens.get(1).charAt(0)));
 
                 if(Character.isLowerCase(tokens.get(1).charAt(0))){
-                    input = (HostBandConvREV(Double.parseDouble(tokens.get(0)),tokens.get(1),tokens.get(2))) +" ";
-                    input += tokens.get(2).toUpperCase() + " per month";
+                    input = new InternetCalculator().hostingBandwidth(new RateUnit(Double.parseDouble(tokens.get(0)), tokens.get(1)), tokens.get(2) ); // error
                 }
                 else {
-                    input = HostBandConv(Double.parseDouble(tokens.get(0)),tokens.get(1),tokens.get(2)) +"";
-                    input = input.charAt(0) + "" + input.charAt(1) + "" + input.charAt(2)+ " ";
-                    input += tokens.get(2).toUpperCase() + "it/s";
+                    input = new InternetCalculator().hostingBandwidth(new SizeUnit(Double.parseDouble(tokens.get(0)), tokens.get(1)), tokens.get(2) ) + "it/s";
                 }
 
                 System.out.println("result: " + input);
@@ -276,7 +278,7 @@ public class UserInterface extends FileInput{
         return input;
     }
 
-    public static String loadTime(){
+    public static String loadTime() throws Exception {
         String input = "";
 
         Scanner scan = new Scanner(System.in);
@@ -297,9 +299,7 @@ public class UserInterface extends FileInput{
                 while (words.hasNext())
                     tokens.add(words.next());
 
-                System.out.println(tokens);
-
-                input = LoadTimeCalc(tokens.get(0),tokens.get(1),tokens.get(2),tokens.get(3));
+                input = new InternetCalculator().estimateTime(  new SizeUnit(Double.parseDouble(tokens.get(0)),tokens.get(1)), new RateUnit(Double.parseDouble(tokens.get(2)),tokens.get(3)) );
                 System.out.println("result: " + input);
             }
         }
@@ -308,12 +308,12 @@ public class UserInterface extends FileInput{
 
     }
 
-    public static String webSite(){
+    public static String webSite() throws Exception {
         String input = "";
 
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("To website bandwidth, type in carrots in the format \"<#value> /per <ScaleUnit>, <#value> <dataUnit> <redundancyFactor>\"");
+        System.out.println("For website bandwidth, type in carrots in the format \"<#value> /per <ScaleUnit>, <#value> <dataUnit> <redundancyFactor>\"");
         System.out.println("ScaleUnit refers to the following; <second>, <minute>, ..., <year>.");
         System.out.println("Note: Redundancy Factor not needed.");
 
@@ -331,13 +331,12 @@ public class UserInterface extends FileInput{
 
                 System.out.println(tokens);
 
-                double[] arr = new double[2];
-                arr = webBandwidth(Double.parseDouble(tokens.get(0)),tokens.get(1).toUpperCase(),Double.parseDouble(tokens.get(2)),tokens.get(3));
-                input = "Bandwidth needed: " + arr[1] + " Mbits/s or " + arr[0] + " GB per month";
+                if(tokens.size() > 4)
+                    input = new InternetCalculator().websiteBandwidth(new FrequencyUnit(Double.parseDouble(tokens.get(0)),tokens.get(1).toUpperCase()),
+                        new SizeUnit(Double.parseDouble(tokens.get(2)),tokens.get(3)),Integer.parseInt(tokens.get(4)));
 
-                if(tokens.size() > 4 && !(tokens.get(4).equals("s")) )
-                input += "\nWith Redundancy factor: "+ arr[1] * Double.parseDouble(tokens.get(4)) + " Mbits/s or "
-                        + arr[0] * Double.parseDouble(tokens.get(4)) + " GB per month";
+                else input = new InternetCalculator().websiteBandwidth(new FrequencyUnit(Double.parseDouble(tokens.get(0)),tokens.get(1).toUpperCase()),
+                        new SizeUnit(Double.parseDouble(tokens.get(2)),tokens.get(3)));
 
                 System.out.println("result: " + input);
             }

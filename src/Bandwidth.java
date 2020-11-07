@@ -3,7 +3,7 @@ import java.util.*;
 public class Bandwidth {
 
 
-    private static final HashMap<String, Integer> indexMap = new HashMap<>();
+    private static final HashMap<String, Integer> indexMap = new HashMap<>();//done?
     private static final HashMap<Integer, String> typeMap = new HashMap<>();
     private static final HashMap<String, Double> timeScale = new HashMap<>();
 
@@ -19,9 +19,9 @@ public class Bandwidth {
         indexMap.put("gb", 6);
         indexMap.put("GB", 7);
         indexMap.put("tb", 8);
-        indexMap.put("TB", 9);
+        indexMap.put("TB", 9); // done
 
-        typeMap.put(0, "b");
+        typeMap.put(0, "b"); // done
         typeMap.put(1, "B");
         typeMap.put(2, "kb");
         typeMap.put(3, "KB");
@@ -32,7 +32,7 @@ public class Bandwidth {
         typeMap.put(8, "tb");
         typeMap.put(9, "TB");
 
-        timeScale.put("YEAR", 3.15576e7);
+        timeScale.put("YEAR", 3.15576e7); // done
         timeScale.put("MONTH", 2629800.0);
         timeScale.put("WEEK", 604800.0);
         timeScale.put("DAY", 86400.0);
@@ -50,7 +50,6 @@ public class Bandwidth {
         //System.out.println(HostBandConvREV(3.0420564301468,"mb","GB"));
 
         //System.out.println("Total time: " + LoadTimeCalc("5223100", "(MB)", "5", "(mb)"));
-
     }
 
     /** This method attempts to output all equivalent conversions from different data types
@@ -68,7 +67,7 @@ public class Bandwidth {
                 System.out.println(" ("+ typeMap.get(i) +") ");
             }
         }
-    }
+    }//done
 
     /** When given a monthly usage w/datatype, this method to convert the equivalence to it
      * with a user given (data type) in per seconds.
@@ -154,7 +153,7 @@ public class Bandwidth {
         } else {
             System.out.println("Error: i = " + i + " index = " + index + " data = " + data);
         }
-    return -1;}
+    return -1;} // done
 
     /** Given two different separate fields (file Size) and (Bandwidth Size) with proper indication on the what data type it is,
      * this method will attempt to calculate and amount of time it will take for a (file) to upload/download
@@ -184,6 +183,6 @@ public class Bandwidth {
         if(timeManager[2] >= 1) replay += ", " + timeManager[2] + " hours";
         if(timeManager[3] >= 1) replay += ", " + timeManager[3] + " days";
         return replay +".";
-    }
+    }//done
 
 }

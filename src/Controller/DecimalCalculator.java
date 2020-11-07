@@ -10,23 +10,23 @@ public class DecimalCalculator extends Calculator<Decimal> {
     }
 
     public Decimal Add(Decimal other) {
-        return new Decimal(Double.parseDouble(this.getObj().getNumber()) + Double.parseDouble(other.getNumber())+"");
+        return new Decimal((Integer.parseInt(this.getObj().getNumber()) + Integer.parseInt(other.getNumber()))+"");
     }
 
     public Decimal Subtract(Decimal other) {
-        return new Decimal(Double.parseDouble(this.getObj().getNumber()) - Double.parseDouble(other.getNumber())+"");
+        return new Decimal(Integer.parseInt(this.getObj().getNumber()) - Integer.parseInt(other.getNumber())+"");
     }
 
     public Decimal Multiply(Decimal other) {
-        return new Decimal(Double.parseDouble(this.getObj().getNumber()) * Double.parseDouble(other.getNumber())+"");
+        return new Decimal(Integer.parseInt(this.getObj().getNumber()) * Integer.parseInt(other.getNumber())+"");
     }
 
     public Decimal Divide(Decimal other) {
-        return new Decimal(Double.parseDouble(this.getObj().getNumber()) / Double.parseDouble(other.getNumber())+"");
+        return new Decimal(Integer.parseInt(this.getObj().getNumber()) / Integer.parseInt(other.getNumber())+"");
     }
 
     public Decimal Modulus(Decimal other) {
-        return new Decimal(Double.parseDouble(this.getObj().getNumber()) % Double.parseDouble(other.getNumber())+"");
+        return new Decimal(Integer.parseInt(this.getObj().getNumber()) % Integer.parseInt(other.getNumber())+"");
     }
 
 }

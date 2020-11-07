@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class FileInput  extends Calculator.BinDecHexCalc {
+public class FileInput  extends Calculator.BinDecHexCalc { // Plan to add console text removal, and finish/simplify wording/commands
 
     public static final HashMap<String,String> wordMap = new HashMap<>();
 
-    public static void set(boolean file) throws Exception {
+    public void goof(File input) throws Exception {
 
+        ///
         setValues();
-
         wordMap.put("BITS", "b");
         wordMap.put("KILOBITS", "kb");
         wordMap.put("MEGABITS", "mb");
@@ -27,12 +27,9 @@ public class FileInput  extends Calculator.BinDecHexCalc {
         wordMap.put("MBIT/S", "mb");
         wordMap.put("GBIT/S", "gb");
         wordMap.put("TBIT/S", "tb");
-        if(file) goof();
-    }
-    public static void goof() throws Exception {
-        String result = "";
+        ///
 
-        File input = new File("inputData.txt");
+        String result = "";
 
         File output = new File("outputData.txt");
         output.createNewFile();
@@ -51,6 +48,7 @@ public class FileInput  extends Calculator.BinDecHexCalc {
                     if(Location.equals("BINARY")){
                         String bin1 = line.next();
                         String bin2 = line.next();
+
                         if(operator.equals("+")) result = bin1 + " + " + bin2 + " = " + (binAdd(bin1,bin2));
                         else if(operator.equals("-")) result = bin1 + " - " + bin2 + " = " + (binSub(bin1,bin2));
                         else if(operator.equals("/")) result = bin1 + " / " + bin2 + " = " + (binDivide(bin1,bin2));
