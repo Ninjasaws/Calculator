@@ -28,6 +28,12 @@ public class RateUnit extends Unit{// And RateUnit is bits/s vs Mbits/s?
         wordMap.put("MBIT/S", "mb");
         wordMap.put("GBIT/S", "gb");
         wordMap.put("TBIT/S", "tb");
+        wordMap.put("Bit/s", "b");
+        wordMap.put("Kbit/s", "kb");
+        wordMap.put("Mbit/s", "mb");
+        wordMap.put("Gbit/s", "gb");
+        wordMap.put("Tbit/s", "tb");
+
 
         if(wordMap.containsKey(this.getType()))
             this.setType(wordMap.get(this.getType()));

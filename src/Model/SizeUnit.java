@@ -44,10 +44,11 @@ public class SizeUnit extends Unit {//  SizeUnit is basically Byte vs KiloBytes.
         public SizeUnit convertTo(String unit) throws Exception {
 
             new SizeUnit(1,unit).isSizeUnit(); // checks to see if input is valid
+            SizeUnit temp = new SizeUnit(1,unit);
 
             double rawData = this.getVal();
             double index = getIndex.get(this.getType());
-            double i = getIndex.get(unit);
+            double i = getIndex.get(temp.getType());
 
             if (index % 2 == 0) {
                 if ((i + index) % 2 == 0) {
@@ -95,9 +96,7 @@ public class SizeUnit extends Unit {//  SizeUnit is basically Byte vs KiloBytes.
             for(int i = 0; i < 10;i++){
                 double sizez = convertTo(getUnit.get(i)).getVal();
                 if(!getUnit.get(i).equals(this.getType())) {
-                    if(sizez > 100000) System.out.print(sizez);
-                    else System.out.printf("%.2f",sizez);
-                    System.out.println(" ("+ getUnit.get(i) +") ");
+                    System.out.println(sizez + " " + getUnit.get(i));
                 }
             }
         }
@@ -106,6 +105,9 @@ public class SizeUnit extends Unit {//  SizeUnit is basically Byte vs KiloBytes.
             if (this.getVal() <= 0)
                 throw new Exception("numVal parameter of SizeUnit must be a number greater than 0. User Entered -> \"" + this.getVal()  + "\" " + this.getType());
             else if(!(getIndex.containsKey(this.getType())))
+                if(new RateUnit().wordMap.containsKey(this.getType()))
+                    this.setType(new RateUnit().wordMap.get(this.getType()));
+                else
                 throw new Exception("unitType parameter of SizeUnit is invalid, for supported unit types type \"help\". User Entered -> \"" + this.getType()  + "\" ");
         }
 

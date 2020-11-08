@@ -43,7 +43,8 @@ public class Hexadecimal extends Number<Hexadecimal> {
 
     public boolean isType(String num) {
         for(int i = 0; i < num.length(); i++){
-            if (!(num.charAt(i) == '0' ||
+            if (!(num.charAt(0) == '-' ||
+                    num.charAt(i) == '0' ||
                     num.charAt(i) == '1'||
                     num.charAt(i) == '2'||
                     num.charAt(i) == '3'||

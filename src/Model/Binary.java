@@ -25,7 +25,7 @@ public class Binary extends Number<Binary> {
     public boolean isType(String num){
         boolean isSafe = true;
         for(int i = 0; i < num.length(); i++)
-            if(!(num.charAt(i) == '0' || num.charAt(i) == '1'))
+            if(!(num.charAt(i) == '0' || num.charAt(i) == '1' || num.charAt(0) == '-'))
                 isSafe = false;
         return isSafe;
     }
@@ -46,7 +46,11 @@ public class Binary extends Number<Binary> {
     public Hexadecimal toHexadecimal(){
 
         String Bin = this.getNumber(); // 01101011111101001000001
-
+        boolean negative = false;
+        if(Bin.charAt(0) == '-'){
+            negative = true;
+            Bin = Bin.substring(1);
+        }
         long temp;
 
         StringBuilder Hex = new StringBuilder();
@@ -57,6 +61,11 @@ public class Binary extends Number<Binary> {
             if(temp > 9) Hex.insert(0, (char) ('7' + temp));
             else Hex.insert(0, temp);
             Bin = Bin.substring(0,Bin.length()-4);
+        }
+
+        if(negative){
+            if(Bin.length() > 0) return new Hexadecimal ("-"+ (new Binary( Bin).toDecimal() ) + Hex.toString());
+            return new Hexadecimal("-"+Hex.toString());
         }
 
         if(Bin.length() > 0) return new Hexadecimal ((new Binary( Bin).toDecimal() ) + Hex.toString());

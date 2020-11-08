@@ -1,3 +1,5 @@
+package View;
+
 import Controller.BinaryCalculator;
 import Controller.DecimalCalculator;
 import Controller.HexCalculator;
@@ -6,14 +8,14 @@ import Model.*;
 
 import java.io.File;
 import java.util.*;
-public class UserInterface extends FileInput{
+public class UserInterface {
 
     public static void main(String[] args) throws Exception {
 
         ArrayList<String> tokens = new ArrayList<>();
 
-        //set(true);
-        setValues();
+
+
         welcomeText();
 
         Scanner scan = new Scanner(System.in);
@@ -136,7 +138,7 @@ public class UserInterface extends FileInput{
                 } else if (tokens.get(1).equals("H")) {
                     if (tokens.get(2).equals("B"))
                         input = new Hexadecimal(tokens.get(0)).toBinary().toString();
-                    else if (tokens.get(2).equals("H"))
+                    else if (tokens.get(2).equals("D"))
                         input = new Hexadecimal(tokens.get(0)).toDecimal().toString();
                     else input = "Error Hexadecimal";
                 }
@@ -174,7 +176,7 @@ public class UserInterface extends FileInput{
                     else if (tokens.get(2).equals("-"))
                         input = new BinaryCalculator(new Binary(tokens.get(1))).Subtract(new Binary(tokens.get(3))).toString();
                     else if (tokens.get(2).equals("/"))
-                        input = new BinaryCalculator(new Binary(tokens.get(1))).Add(new Binary(tokens.get(3))).toString()
+                        input = new BinaryCalculator(new Binary(tokens.get(1))).Divide(new Binary(tokens.get(3))).toString()
                                 + " Remainder of " + new BinaryCalculator(new Binary(tokens.get(1))).Modulus(new Binary(tokens.get(3))).toString();
                     else if (tokens.get(2).equals("*"))
                         input = new BinaryCalculator(new Binary(tokens.get(1))).Multiply(new Binary(tokens.get(3))).toString();

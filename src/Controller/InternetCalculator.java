@@ -52,11 +52,13 @@ public class InternetCalculator {
     }
 
     public String hostingBandwidth(SizeUnit monthlyUse,String bandwidthUnit) throws Exception {
-        return monthlyUse.toString() + " per month is equivalent to " + (monthlyUse.convertTo(bandwidthUnit).getVal() / new FrequencyUnit().getTime.get("MONTH")) + " " + bandwidthUnit ;
+        bandwidthUnit= new SizeUnit(1,bandwidthUnit).getType();
+        return monthlyUse.toString() + " per month is equivalent to " + (monthlyUse.convertTo(bandwidthUnit).getVal() / new FrequencyUnit().getTime.get("MONTH")) + " " + bandwidthUnit + "/s" ;
     }
 
     public String hostingBandwidth(RateUnit Bandwidth,String sizeType) throws Exception { // error
-        return Bandwidth.toString() + " is equivalent 2 "
+        sizeType= new SizeUnit(1,sizeType).getType();
+        return Bandwidth.toString() + "/s is equivalent to "
                 + ( new SizeUnit(Bandwidth.getVal(),Bandwidth.getType()).convertTo(sizeType).getVal() * new FrequencyUnit().getTime.get("MONTH")) + " " + sizeType;
     }
 }

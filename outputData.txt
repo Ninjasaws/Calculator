@@ -1,19 +1,19 @@
 111010010101 + 10100101010101 = 11011111101010
 111010010101 - 10100101010101 = -1101011000000
 111010010101 - 101000101 = 110101010000
-111010010101 / 10100101010101 = 0 Remainder: 111010010101
+111010010101 / 10100101010101 = 0 remainder: 111010010101
 111010010101 * 10100101010101 = 10010110101011010001111001
 2D29 + 82D3 = AFFC
-2D29 - 82D3 = -55AA
-2D29 / 82D3 = 0 Remainder: 2D29
+2D29 - 82D3 = 55AA
+2D29 / 82D3 = 0 remainder: 2D29
 2D29 * 82D3 = 17140ACB
 Binary (111010010101) to Decimal = 3733
 Decimal (3733) to Binary = 111010010101
 Hexadecimal (AFFC) to Decimal = 45052
 Decimal (3733) to Hexadecimal = E95
-49039 bit(s) to GIGABYTES = 6.129875E-6 GB
-Up/download will take 6 seconds, 1 minutes, 1 hours, 1 days.
+49039 bit(s) to GIGABYTES = 6.129875E-6 GIGABYTES
+Up/download will take, 1 days, 1 hours, 1 minutes, 6 seconds.
 Actual bandwidth needed is 0.23148148148148148 Mbit/s or 76.09375 GB per month
-with a redundancy factor of 0.46296296296296297 Mbit/s or 152.1875 GB per month.
-2 mb is equivalent to 657.45 GIGABYTES per month
-657.45 GIGABYTES is equivalent to 2.0 MBIT/S
+with a redundancy factor of 0.46296296296296297 Mbit/s or 152.1875 GB per month
+2.0 mb/s is equivalent to 657.45 GB
+657.45 GB per month is equivalent to 2.0000000000000004 mb/s

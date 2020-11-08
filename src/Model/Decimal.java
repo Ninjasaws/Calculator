@@ -26,7 +26,8 @@ public class Decimal extends Number<Decimal>{
 
     public boolean isType(String num) {
         for (int i = 0; i < num.length(); i++) {
-            if (!(num.charAt(i) == '0' ||
+            if(!(num.charAt(0) == '-' ||
+                    num.charAt(i) == '0' ||
                     num.charAt(i) == '1' ||
                     num.charAt(i) == '2' ||
                     num.charAt(i) == '3' ||
@@ -43,8 +44,13 @@ public class Decimal extends Number<Decimal>{
 
     public Binary toBinary(){
         String dec = this.getNumber();
+        boolean negative = false;
 
         if(dec.equals("0")) return new Binary();
+        if(dec.charAt(0) == '-'){
+            dec = dec.substring(1);
+            negative = true;}
+
 
         double count = Integer.parseInt(dec);
 
@@ -58,7 +64,6 @@ public class Decimal extends Number<Decimal>{
 
         }
         if(count == 1) powList.add(0);
-
         String[] binArr = new String[powList.get(0)+1];
 
         for (Integer x:powList) {
@@ -69,12 +74,13 @@ public class Decimal extends Number<Decimal>{
             if(binArr[i] == null) binArr[i] = "0";
         }
 
+        if (negative)
+            return new Binary("-"+ArrToStr(binArr));
         return new Binary(ArrToStr(binArr));
-
-
     }
 
-    public Hexadecimal toHexadecimal(){ return this.toBinary().toHexadecimal(); }
+    public Hexadecimal toHexadecimal(){
+        return this.toBinary().toHexadecimal(); }
 
 
     private static String ArrToStr(String[] StrArr){
